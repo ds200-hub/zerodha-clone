@@ -42,13 +42,13 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post("http://localhost:3002/signup", { ...inputValue }, { withCredentials: true });
+            const { data } = await axios.post("https://zerodha-server.vercel.app/signup", { ...inputValue }, { withCredentials: true });
 
             const { success, message } = data;
             if (success) {
                 handleSuccess(message);
                 setTimeout(() => {
-                    window.location.href = "http://localhost:5175" // user ko redirect krr dena 
+                    window.location.href = "https://zerodha-dashboard-jade.vercel.app" // user ko redirect krr dena 
                 }, 3000);
             }
             else {

@@ -32,7 +32,7 @@ function Menu() {
         removeCookie("token");
         handleSuccess("Logout Successfully");
         setTimeout(()=>{
-            window.location.href = "http://localhost:5173";
+            window.location.href = "https://zerodha-landing-page-three.vercel.app";
         },1000);
     }
 

@@ -40,7 +40,7 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post("http://localhost:3002/login",
+            const { data } = await axios.post("https://zerodha-server.vercel.app/login",
                 { ...inputValue },
                 { withCredentials: true }
             );
@@ -49,7 +49,7 @@ function Login() {
             if (success) {
                 handleSuccess(message);
                 setTimeout(() => {
-                    window.location.href = "http://localhost:5175";
+                    window.location.href = "https://zerodha-dashboard-jade.vercel.app";
                 }, 1000);
             } else {
                 handleError(message);
