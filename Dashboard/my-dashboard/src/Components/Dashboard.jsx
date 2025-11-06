@@ -23,14 +23,14 @@ function Dashboard() {
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
-        window.location.href = "http://localhost:5174/login";
+        window.location.href = "https://zerodha-authentication.vercel.app/login";
       }
-      const { data } = await axios.post("http://localhost:3002", {}, { withCredentials: true });
+      const { data } = await axios.post("https://zerodha-server.vercel.app", {}, { withCredentials: true });
       const { status, user } = data;
       setUsername(user);
       if (!status) {
         removeCookie("token");
-        window.location.href = "http://localhost:5174/login";
+        window.location.href = "https://zerodha-authentication.vercel.app/login";
 
         //  Prevent duplicate toast using toastId
         //     if (!toast.isActive("welcome-toast")) {
