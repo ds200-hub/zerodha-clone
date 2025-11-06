@@ -1,0 +1,39 @@
+.nav-link {
+    margin-left: 40px;
+}
+
+.footer-link {
+    padding: 0 70px 0 70px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link-anchor a {
+    text-decoration: none;
+    display: block;
+    margin-bottom: -10px;
+}
+#supportHero{
+    background-color: rgb(56, 126, 209);
+    color: white;
+}
+#supportHero a{
+    color: white;
+}
+#supportHero input{
+    padding: 20px 50px;
+    width: 90%;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+}
+#supportWrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 150px;
+}
