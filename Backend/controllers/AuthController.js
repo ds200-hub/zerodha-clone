@@ -43,7 +43,9 @@ const Login = async(req,res,next)=>{
         if(!email || !password) {
             return res.json({message:"All fields are required"});
         }
+        console.log("reached to user");
         const user = await UserModel.findOne({email});
+        console.log(user);
         if(!user){
             return res.json({message:"Incorrect password or email"});
         }
