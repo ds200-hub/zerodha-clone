@@ -43,6 +43,7 @@ const Login = async (req, res) => {
         }
 
         const user = await UserModel.findOne({ email });
+        console.log(user)
         if (!user) {
             return res.status(401).json({ success: false, message: "Incorrect email or password" });
         }
@@ -53,6 +54,8 @@ const Login = async (req, res) => {
         }
 
         const token = CreateSecretToken(user._id);
+        console.log(token)
+
         const isProduction = process.env.NODE_ENV === "production";
 
         res.cookie("token", token, {
