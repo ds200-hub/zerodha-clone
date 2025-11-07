@@ -41,7 +41,7 @@ function Login() {
         e.preventDefault();
         console.log("working");
         try {
-            const { data } = await axios.post("https://localhost:3002/login",
+            const { data } = await axios.post("https://zerodha-server.vercel.app/login",
                 { ...inputValue },
                 { withCredentials: true }
             );
