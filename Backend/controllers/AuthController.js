@@ -22,9 +22,10 @@ const SignUp = async (req, res) => {
         const isProduction = process.env.NODE_ENV === "production";
 
         res.cookie("token", token, {
-            httpOnly: true,
-            sameSite: isProduction ? "None" : "Lax",
-            secure: isProduction,
+            httpOnly: false,         // allow React to read it
+            secure: true,            // must be true for HTTPS
+            sameSite: "None",        // cross-site cookie
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
         });
 
         res.status(201).json({ message: "User signed up successfully", success: true, user });
@@ -59,9 +60,10 @@ const Login = async (req, res) => {
         const isProduction = process.env.NODE_ENV === "production";
 
         res.cookie("token", token, {
-            httpOnly: true,
-            sameSite: isProduction ? "None" : "Lax",
-            secure: isProduction,
+            httpOnly: false,         // allow React to read it
+            secure: true,            // must be true for HTTPS
+            sameSite: "None",        // cross-site cookie
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
         });
 
         res.status(200).json({ message: "User logged in successfully", success: true });
