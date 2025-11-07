@@ -42,7 +42,7 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post("https://zerodha-server.vercel.app/signup", { ...inputValue }, { withCredentials: true });
+            const { data } = await axios.post("https://zerodha-server-fspq.onrender.com/signup", { ...inputValue }, { withCredentials: true });
 
             const { success, message } = data;
             if (success) {
