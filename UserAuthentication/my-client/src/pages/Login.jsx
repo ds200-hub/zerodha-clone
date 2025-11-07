@@ -39,13 +39,16 @@ function Login() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("working");
         try {
             const { data } = await axios.post("https://zerodha-server.vercel.app/login",
                 { ...inputValue },
                 { withCredentials: true }
             );
+            console.log("working data");
             console.log(data);
             const { success, message } = data;
+            console.log("success");
             if (success) {
                 handleSuccess(message);
                 setTimeout(() => {
@@ -82,7 +85,7 @@ function Login() {
                     </div>
                     <button type="submit" >Submit</button>
                     <span>
-                        Don't have an account? <Link to={"/signup"}>Signup</Link>
+                        Don't have an account?<Link to={"/signup"}>Signup</Link>
                     </span>
                     <ToastContainer></ToastContainer>
                 </form>
