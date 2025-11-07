@@ -23,8 +23,8 @@ function Dashboard() {
 
   useEffect(() => {
 
-    console.log("working");
     const verifyCookie = async () => {
+      console.log(cookies.token);
       if (!cookies.token) {
         navigate("/login");
       }
