@@ -51,7 +51,7 @@ function Login() {
             if (success) {
                 handleSuccess(message);
                 setTimeout(() => {
-                    navigate("/");
+                     window.location.href = "https://zerodha-dashboard-jade.vercel.app/";
                 }, 1000);
             } else {
                 handleError(message);
