@@ -36,6 +36,8 @@ const SignUp = async(req, res, next) =>{
 };
 
 const Login = async(req,res,next)=>{
+    console.log("reached to login");
+    console.log(req.body);
     try{
         const {email,password} = req.body;
         if(!email || !password) {
@@ -49,10 +51,13 @@ const Login = async(req,res,next)=>{
         if(!auth){
             return res.json({message:"Incorrect password or email"});
         }
+        console.log("reached to token");
         const token = CreateSecretToken(user._id);
         res.cookie("token", token, {withCredentials:true, httpOnly:false,});
         res.status(201).json({message: "user logged in successfully",success: true});
+        console.log("reached after token");
         next()
+        console.log("next");
     }catch(error) {
         console.log(error);
     }
