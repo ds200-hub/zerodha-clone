@@ -7,8 +7,6 @@ function Home() {
         <>
                 <TopBar></TopBar>
                 <Dashboard></Dashboard>
-        
-
         </>
     );
 }
