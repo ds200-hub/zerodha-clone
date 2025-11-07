@@ -17,20 +17,20 @@ import { GeneralContextProvider } from "./GeneralContext";
 
 
 function Dashboard() {
-  // const [cookies, removeCookie] = useCookies([]); // cookies react cookies se aa rha hai.
-  // const [username, setUsername] = useState("");
+  const [cookies, removeCookie] = useCookies([]); // cookies react cookies se aa rha hai.
+  const [username, setUsername] = useState("");
 
-  // useEffect(() => {
-  //   const verifyCookie = async () => {
-  //     if (!cookies.token) {
-  //       window.location.href = "https://zerodha-authentication.vercel.app/login";
-  //     }
-  //     const { data } = await axios.post("https://zerodha-server.vercel.app", {}, { withCredentials: true });
-  //     const { status, user } = data;
-  //     setUsername(user);
-  //     if (!status) {
-  //       removeCookie("token");
-  //       window.location.href = "https://zerodha-authentication.vercel.app/login";
+  useEffect(() => {
+    const verifyCookie = async () => {
+      if (!cookies.token) {
+        window.location.href = "https://zerodha-authentication.vercel.app/login";
+      }
+      const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
+      const { status, user } = data;
+      setUsername(user);
+      if (!status) {
+        removeCookie("token");
+        window.location.href = "https://zerodha-authentication.vercel.app/login";
 
         //  Prevent duplicate toast using toastId
         //     if (!toast.isActive("welcome-toast")) {
@@ -42,11 +42,11 @@ function Dashboard() {
         // } else {
         //     removeCookie("token");
         //     navigate("/login");
-  //     }
+      }
 
-  //   }
-  //   verifyCookie();
-  // }, [cookies, removeCookie]);
+    }
+    verifyCookie();
+  }, [cookies, removeCookie]);
 
   // const Logout = () => {
   //   removeCookie("token");

@@ -28,13 +28,13 @@ function Menu() {
         }
     }
 
-    // const Logout = () => {
-    //     removeCookie("token");
-    //     handleSuccess("Logout Successfully");
-    //     setTimeout(()=>{
-    //         window.location.href = "https://zerodha-landing-page-three.vercel.app";
-    //     },1000);
-    // }
+    const Logout = () => {
+        removeCookie("token");
+        handleSuccess("Logout Successfully");
+        setTimeout(()=>{
+            window.location.href = "https://zerodha-landing-page-three.vercel.app";
+        },1000);
+    }
 
     const menuClass = "menu";
     const activeMenuClass = "menu-selected"
@@ -77,7 +77,7 @@ function Menu() {
                 <hr />
                 <div className="profile" onClick={handleProfileClick}>
                     <div className="avatar">D</div>
-                    <p className="username" >LogOut</p>
+                    <p className="username" onClick={Logout}>LogOut</p>
                 </div>
             </div>
             <ToastContainer></ToastContainer>
