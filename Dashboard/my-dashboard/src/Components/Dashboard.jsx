@@ -21,26 +21,51 @@ function Dashboard() {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
+  // useEffect(() => {
+
+  //   const verifyCookie = async () => {
+  //     console.log(cookies.token);
+  //     if (!cookies.token) {
+  //       navigate("/login");
+  //     }
+
+  //     const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
+  //     console.log(data);
+  //     const { status, user } = data;
+  //     setUsername(user);
+  //     if (!status) {
+  //       removeCookie("token");
+  //       navigate("/login");
+
+  //     }
+  //   }
+  //   verifyCookie();
+  // }, [cookies, removeCookie]);
+
   useEffect(() => {
+    const verifyUser = async () => {
+      try {
+        const { data } = await axios.get(
+          "https://zerodha-dashboard-jade.vercel.app",
+          { withCredentials: true } // send cookies automatically
+        );
 
-    const verifyCookie = async () => {
-      console.log(cookies.token);
-      if (!cookies.token) {
+        if (data.status) {
+          setUsername(data.user);
+          setCookiesToken(true);
+        } else {
+          setCookiesToken(false);
+          navigate("/login");
+        }
+      } catch (err) {
+        console.error(err);
+        setCookiesToken(false);
         navigate("/login");
       }
+    };
 
-      const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
-      console.log(data);
-      const { status, user } = data;
-      setUsername(user);
-      if (!status) {
-        removeCookie("token");
-        navigate("/login");
-
-      }
-    }
-    verifyCookie();
-  }, [cookies, removeCookie]);
+    verifyUser();
+  }, [navigate]);
 
   return (
     <div className="dashboard-container">
