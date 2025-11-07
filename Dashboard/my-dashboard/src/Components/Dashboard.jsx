@@ -17,26 +17,26 @@ import { GeneralContextProvider } from "./GeneralContext";
 
 
 function Dashboard() {
-  const [cookies, removeCookie] = useCookies([]); // cookies react cookies se aa rha hai.
-  const [username, setUsername] = useState("");
-  const navigate = useNavigate();
+  // const [cookies, removeCookie] = useCookies([]); // cookies react cookies se aa rha hai.
+  // const [username, setUsername] = useState("");
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const verifyCookie = async () => {
-      if (!cookies.token) {
-        navigate("/login");
-      }
-      const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
-      const { status, user } = data;
-      setUsername(user);
-      if (!status) {
-        removeCookie("token");
-        navigate("/login");
+  // useEffect(() => {
+  //   const verifyCookie = async () => {
+  //     if (!cookies.token) {
+  //       navigate("/login");
+  //     }
+  //     const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
+  //     const { status, user } = data;
+  //     setUsername(user);
+  //     if (!status) {
+  //       removeCookie("token");
+  //       navigate("/login");
 
-      }
-    }
-    verifyCookie();
-  }, [cookies, removeCookie]);
+  //     }
+  //   }
+  //   verifyCookie();
+  // }, [cookies, removeCookie]);
 
   return (
     <div className="dashboard-container">
