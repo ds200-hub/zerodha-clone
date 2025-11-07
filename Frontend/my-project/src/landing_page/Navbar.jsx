@@ -17,7 +17,7 @@ function Navbar() {
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 {/* <Link class="nav-link active" aria-current="page" to="/Signup">SignUp</Link> */}
-                                <a className='nav-link active' href="https://zerodha-authentication.vercel.app/login" target='_self'>Login</a> {/*_self se hum same tab mein redirect honge aur _blank likhne se dusre tab mein redirect honge */}
+                                <a className='nav-link active' href="https://zerodha-dashboard-jade.vercel.app/login" target='_self'>Login</a> {/*_self se hum same tab mein redirect honge aur _blank likhne se dusre tab mein redirect honge */}
                             </li>
                             <li class="nav-item">
                                 <Link class="nav-link active" to="/About">About</Link>

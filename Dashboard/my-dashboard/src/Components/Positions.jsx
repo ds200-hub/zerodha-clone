@@ -6,7 +6,7 @@ function Positions() {
   const [allPositions, setAllPositions] = useState([]);
 
   useEffect(() => {
-    axios.get("https://zerodha-server.vercel.app/allPositions").then((res) => {
+    axios.get("https://zerodha-server-fspq.onrender.com/allPositions").then((res) => {
       console.log(res.data);
       setAllPositions(res.data);
     })

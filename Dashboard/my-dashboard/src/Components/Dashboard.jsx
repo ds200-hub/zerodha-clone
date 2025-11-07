@@ -19,40 +19,25 @@ import { GeneralContextProvider } from "./GeneralContext";
 function Dashboard() {
   const [cookies, removeCookie] = useCookies([]); // cookies react cookies se aa rha hai.
   const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
-        window.location.href = "https://zerodha-authentication.vercel.app/login";
+        navigate("/login");
       }
       const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
       const { status, user } = data;
       setUsername(user);
       if (!status) {
         removeCookie("token");
-        window.location.href = "https://zerodha-authentication.vercel.app/login";
+        navigate("/login");
 
-        //  Prevent duplicate toast using toastId
-        //     if (!toast.isActive("welcome-toast")) {
-        //         toast(`Hello ${user}`, {
-        //             position: "top-right",
-        //             toastId: "welcome-toast", // unique id to stop duplicates
-        //         });
-        //     }
-        // } else {
-        //     removeCookie("token");
-        //     navigate("/login");
       }
-
     }
     verifyCookie();
   }, [cookies, removeCookie]);
 
-  // const Logout = () => {
-  //   removeCookie("token");
-  //   window.location.href = "http://localhost:5174/login";
-
-  // }
   return (
     <div className="dashboard-container">
       <GeneralContextProvider>
@@ -66,6 +51,7 @@ function Dashboard() {
           <Route path="/positions" element={<Positions />} />
           <Route path="/funds" element={<Funds />} />
           <Route path="/apps" element={<Apps />} />
+          
         </Routes>
       </div>
     </div>
