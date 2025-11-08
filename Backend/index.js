@@ -16,24 +16,25 @@ const url = process.env.MONGO_URL;
 
 const app = express();
 
-// app.use(cors()); “ye Har origin se request allow kar do — lekin without credentials (cookies / auth headers).”
 const allowedOrigin = [
-    // "https://zerodha-dashboard-jade.vercel.app"
-    "http://localhost:5175"
+    "http://localhost:5175", // local dev
+    "https://zerodha-dashboard-jade.vercel.app" // deployed frontend
 ];
 
 app.use(cors({
     origin: (origin, callback) => {
-        if (!origin || allowedOrigin.includes(origin)) { // frontent se request orgin: "http,,,,," naam se aati hai, allowedOrigin.includes(origin) iskh code se check hoga ki orgin ki value allowdOrigin mein lie krti hai. aur if hum kai baar test ke time req postman, hopscotch se bhehte hai toh ush time ko origin nhi aata jaise frontent app ke case mein hota tha. ishliye !origin line ko likha mean agar origin nhi aaya toh bhi aage bdhe. ye sirf 3rd pary api test case mein hoga.
-            callback(null, true); // ye allow krta hai req ko
-        }
-        else {
+        // allow requests with no origin (like Postman)
+        if (!origin || allowedOrigin.includes(origin)) {
+            callback(null, true);
+        } else {
             callback(new Error("Not allowed by CORS"));
         }
     },
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    credentials: true, // allow cookies
 }));
+
+
 app.use(express.json());
 
 app.use(cookieParser());
