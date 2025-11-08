@@ -27,7 +27,8 @@ function Dashboard() {
       if (!cookies.token) {
         navigate("/login");
       }
-      const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
+      // const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
+      const { data } = await axios.post("http://localhost:3002", {}, { withCredentials: true });
       const { status, user } = data;
       setUsername(user);
       if (!status) {

@@ -45,7 +45,8 @@ function Signup() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://zerodha-server-fspq.onrender.com/signup",
+        // "https://zerodha-server-fspq.onrender.com/signup",
+        "http://localhost:3002/signup",
         { ...inputValue },
         { withCredentials: true }
       );
