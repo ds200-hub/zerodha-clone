@@ -16,8 +16,8 @@ function Navbar() {
                     <form class="d-flex" role="search">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                {/* <a className='nav-link active' href="https://zerodha-dashboard-jade.vercel.app/login" target='_self'>Login</a> */}
-                                <a className='nav-link active' href="http://localhost:5174/login" target='_self'>Login</a> 
+                                <a className='nav-link active' href="https://zerodha-dashboard-jade.vercel.app/login" target='_self'>Login</a>
+                                {/* <a className='nav-link active' href="http://localhost:5175/login" target='_self'>Login</a>  */}
                             </li>
                             <li class="nav-item">
                                 <Link class="nav-link active" to="/About">About</Link>

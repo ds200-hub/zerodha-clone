@@ -22,17 +22,21 @@ function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
+
     const verifyCookie = async () => {
-      if (!cookies.token) {
-        navigate("/login");
-      }
-      // const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
-      const { data } = await axios.post("http://localhost:3002", {}, { withCredentials: true });
+    
+      const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
+      // const { data } = await axios.post("http://localhost:3002", {}, { withCredentials: true });
       const { status, user } = data;
       setUsername(user);
       if (!status) {
-        removeCookie("token");
+        await axios.post(
+          // "http://localhost:3002/logout",
+          "https://zerodha-server-fspq.onrender.com/logout",
+          {},
+          { withCredentials: true }
+        );
+        
         navigate("/login");
 
       }

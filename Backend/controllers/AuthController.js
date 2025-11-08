@@ -22,10 +22,10 @@ const SignUp = async (req, res) => {
         const isProduction = process.env.NODE_ENV === "production";
 
         res.cookie("token", token, {
-            httpOnly: false,         // allow React to read it
-            secure: true,            // must be true for HTTPS
-            sameSite: "None",        // cross-site cookie
-            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            httpOnly: true,       // JS cannot read it (safer)
+            secure: true,         // required for HTTPS
+            sameSite: "None",     // allows cross-site cookies
+            maxAge: 24 * 60 * 60 * 1000 // 1 day
         });
 
         res.status(201).json({ message: "User signed up successfully", success: true, user });
@@ -60,10 +60,10 @@ const Login = async (req, res) => {
         const isProduction = process.env.NODE_ENV === "production";
 
         res.cookie("token", token, {
-            httpOnly: false,         // allow React to read it
-            secure: true,            // must be true for HTTPS
-            sameSite: "None",        // cross-site cookie
-            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            httpOnly: true,       // JS cannot read it (safer)
+            secure: true,         // required for HTTPS
+            sameSite: "None",     // allows cross-site cookies
+            maxAge: 24 * 60 * 60 * 1000 // 1 day
         });
 
         res.status(200).json({ message: "User logged in successfully", success: true });
@@ -73,4 +73,17 @@ const Login = async (req, res) => {
     }
 };
 
-module.exports = { SignUp, Login };
+//logout
+
+const Logout = (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+  });
+  res.json({ message: "Logged out successfully" });
+};
+
+
+
+module.exports = { SignUp, Login, Logout};

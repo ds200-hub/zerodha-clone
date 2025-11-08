@@ -43,8 +43,8 @@ function Login() {
         e.preventDefault();
         try {
             const { data } = await axios.post(
-                // "https://zerodha-server-fspq.onrender.com/login",
-                "http://localhost:3002/login",
+                "https://zerodha-server-fspq.onrender.com/login",
+                // "http://localhost:3002/login",
                 { ...inputValue },
                 { withCredentials: true }
             );

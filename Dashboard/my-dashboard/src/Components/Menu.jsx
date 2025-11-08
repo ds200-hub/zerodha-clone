@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 
 
 function Menu() {
@@ -28,14 +29,23 @@ function Menu() {
         }
     }
 
-    const Logout = () => {
-        removeCookie("token");
-        handleSuccess("Logout Successfully");
-        setTimeout(()=>{
-            // window.location.href = "https://zerodha-landing-page-three.vercel.app";
-            window.location.href = "http://localhost:5173";
-        },1000);
-    }
+    const Logout = async () => {
+        try {
+            await axios.post(
+                // "http://localhost:3002/logout",
+                "https://zerodha-server-fspq.onrender.com/logout",
+                {},
+                { withCredentials: true } // send the cookie
+            );
+            handleSuccess("Logout Successfully");
+            setTimeout(() => {
+                window.location.href = "https://zerodha-landing-page-three.vercel.app";
+                // window.location.href = "http://localhost:5173";
+            }, 1000);
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     const menuClass = "menu";
     const activeMenuClass = "menu-selected"

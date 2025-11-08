@@ -19,7 +19,7 @@ const app = express();
 // app.use(cors()); “ye Har origin se request allow kar do — lekin without credentials (cookies / auth headers).”
 const allowedOrigin = [
     // "https://zerodha-dashboard-jade.vercel.app"
-    "http://localhost:3002"
+    "http://localhost:5175"
 ];
 
 app.use(cors({
