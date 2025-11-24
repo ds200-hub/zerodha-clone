@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function Login() {
     const navigate = useNavigate();
@@ -43,8 +44,7 @@ function Login() {
         e.preventDefault();
         try {
             const { data } = await axios.post(
-                "https://zerodha-server-fspq.onrender.com/login",
-                // "http://localhost:3002/login",
+                `${BASE_URL}/login`,
                 { ...inputValue },
                 { withCredentials: true }
             );

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function Signup() {
   const navigate = useNavigate();
@@ -45,8 +46,7 @@ function Signup() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://zerodha-server-fspq.onrender.com/signup",
-        // "http://localhost:3002/signup",
+        `${BASE_URL}/signup`,
         { ...inputValue },
         { withCredentials: true }
       );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+const DASHBOARD_URL = import.meta.env.VITE_DASHBOARD_URL;
 
 function Navbar() {
     return (
@@ -16,7 +17,7 @@ function Navbar() {
                     <form class="d-flex" role="search">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a className='nav-link active' href="https://zerodha-dashboard-jade.vercel.app/login" target='_self'>Login</a>
+                                <a className='nav-link active' href={`${DASHBOARD_URL}/login`} target='_self'>Login</a>
                                 {/* <a className='nav-link active' href="http://localhost:5175/login" target='_self'>Login</a>  */}
                             </li>
                             <li class="nav-item">

@@ -14,6 +14,7 @@ import Summary from "./Summary";
 import WatchList from "./WatchList";
 
 import { GeneralContextProvider } from "./GeneralContext";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 
 function Dashboard() {
@@ -25,14 +26,12 @@ function Dashboard() {
 
     const verifyCookie = async () => {
     
-      const { data } = await axios.post("https://zerodha-server-fspq.onrender.com", {}, { withCredentials: true });
-      // const { data } = await axios.post("http://localhost:3002", {}, { withCredentials: true });
+      const { data } = await axios.post(`${BASE_URL}`, {}, { withCredentials: true });
       const { status, user } = data;
       setUsername(user);
       if (!status) {
         await axios.post(
-          // "http://localhost:3002/logout",
-          "https://zerodha-server-fspq.onrender.com/logout",
+          `${BASE_URL}/logout`,
           {},
           { withCredentials: true }
         );

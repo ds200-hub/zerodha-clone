@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const VITE_LANDING_URL = import.meta.env.VITE_LANDING_URL;
+
 
 
 function Menu() {
@@ -32,15 +35,13 @@ function Menu() {
     const Logout = async () => {
         try {
             await axios.post(
-                // "http://localhost:3002/logout",
-                "https://zerodha-server-fspq.onrender.com/logout",
+                `${BASE_URL}/logout`,
                 {},
                 { withCredentials: true } // send the cookie
             );
             handleSuccess("Logout Successfully");
             setTimeout(() => {
-                window.location.href = "https://zerodha-landing-page-three.vercel.app";
-                // window.location.href = "http://localhost:5173";
+                window.location.href = `${VITE_LANDING_URL}`;
             }, 1000);
         } catch (err) {
             console.error(err);

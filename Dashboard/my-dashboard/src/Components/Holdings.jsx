@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function Holdings() {
 
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(()=>{
-    axios.get("https://zerodha-server-fspq.onrender.com/allHoldings").then((res)=>{
+    axios.get(`${BASE_URL}/allHoldings`).then((res)=>{
       setAllHoldings(res.data);
     })
-    // axios.get("http://localhost:3002/allHoldings").then((res)=>{
-    //   setAllHoldings(res.data);
-    // })
   },[]);
 
   const labels = allHoldings.map((subArray) => subArray["name"]);

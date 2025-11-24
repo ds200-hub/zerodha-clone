@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function Positions() {
 
   const [allPositions, setAllPositions] = useState([]);
 
   useEffect(() => {
-    axios.get("https://zerodha-server-fspq.onrender.com/allPositions").then((res) => {
-      // axios.get("http://localhost:3002/allPositions").then((res) => {
+    axios.get(`${BASE_URL}/allPositions`).then((res) => {
       console.log(res.data);
       setAllPositions(res.data);
     })
