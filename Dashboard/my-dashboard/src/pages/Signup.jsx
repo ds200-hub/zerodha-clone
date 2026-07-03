@@ -57,11 +57,10 @@ function Signup() {
         setTimeout(() => {
           navigate("/");
         }, 1000);
-      } else {
-        handleError(message);
       }
     } catch (error) {
       console.log(error);
+       handleError(message);
     }
 
     setInputValue({
