@@ -21,7 +21,6 @@ function Login() {
     };
 
     const handleError = (err) => {
-        console.log("here is the code");
         if (!toast.isActive("error-toast")) {
             toast.error(err, {
                 position: "top-center",
