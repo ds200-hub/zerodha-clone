@@ -60,7 +60,7 @@ function Signup() {
       }
     } catch (error) {
       console.log(error);
-       handleError(message);
+       handleError(error.response.data.message);
     }
 
     setInputValue({

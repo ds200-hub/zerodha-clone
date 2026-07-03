@@ -21,6 +21,7 @@ function Login() {
     };
 
     const handleError = (err) => {
+        console.log("here is the code");
         if (!toast.isActive("error-toast")) {
             toast.error(err, {
                 position: "top-center",
@@ -58,7 +59,7 @@ function Login() {
             }
         } catch (error) {
             console.log(error);
-            handleError(message);
+            handleError(error.response.data.message);
         }
         setInputValue({
             email: "",
